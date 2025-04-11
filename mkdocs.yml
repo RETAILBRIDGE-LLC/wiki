@@ -1,5 +1,5 @@
-site_name: My MkDocs Material Documentation
-site_url: https://wiki.retailbridge
+site_name: Vocasync Studios
+site_url: https://wiki.retailbridge/vocasync
 nav:
   - Home: index.md
   - VocaSync:
