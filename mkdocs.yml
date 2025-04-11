@@ -1,5 +1,21 @@
 site_name: My MkDocs Material Documentation
 site_url: https://wiki.retailbridge
+nav:
+  - Home: index.md
+  - VocaSync:
+      - Overview: vocasync/project_overview.md
+      - Architecture: vocasync/architecture.md
+  - Phases:
+      - MVP Phase (Phase 1):
+          - Overview: phases/phase1_mvp/index.md
+          - Speech to Text: phases/phase1_mvp/speech_to_text.md
+          - Translation: phases/phase1_mvp/translation.md
+          - Emotion Detection: phases/phase1_mvp/emotion_detection.md
+          - Voice Synthesis: phases/phase1_mvp/voice_synthesis.md
+          - Lip Sync: phases/phase1_mvp/lip_sync.md
+          - Manual Pipeline Integration: phases/phase1_mvp/manual_pipeline.md
+      - Alpha Phase (Phase 2): phases/phase2_alpha/index.md
+  - Glossary: glossary.md
 theme:
   features:
     - navigation.footer
@@ -25,8 +41,16 @@ theme:
       accent: deep orange
 markdown_extensions:
   - admonition
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.emoji
+  - pymdownx.tabbed
+  - pymdownx.keys
+  - pymdownx.tasklist
+  
+  - toc:
+      permalink: true
   - pymdownx.tabbed:
       alternate_style: true
   - attr_list
@@ -45,6 +69,8 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
 extra:
   social:
     - icon: simple/youtube
