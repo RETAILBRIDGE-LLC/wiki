@@ -15,6 +15,7 @@ nav:
           - Lip Sync: phases/phase1_mvp/lip_sync.md
           - Manual Pipeline Integration: phases/phase1_mvp/manual_pipeline.md
           - Test: phases/phase1_mvp/test.md
+          - GCP setup: phases/phase1_mvp/gc_setup.md 
       - Alpha Phase (Phase 2): phases/phase2_alpha/index.md
   - Glossary: glossary.md
 theme:
