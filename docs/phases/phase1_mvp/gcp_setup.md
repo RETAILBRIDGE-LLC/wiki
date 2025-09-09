@@ -1,4 +1,4 @@
-# Overview of Vocasync UI
+# **Overview of Vocasync UI**
 
 To implement an AI-powered video dubbing and voice cloning system, built using Gradio for the user interface. The pipeline takes an input video, extracts its audio, segments it into smaller chunks based on transcription timestamps, translates each segment into the target language, and then generates dubbed speech for each segment using advanced text-to-speech (TTS) models. It supports two modes of synthesis: original speaker cloning to preserve the speaker’s identity, and emotion cloning where a separate reference audio is used to transfer a specific emotional tone.The final result is a properly clubbed cloned audio tracks of both original audio clone and emotion reference audio clone.
 
