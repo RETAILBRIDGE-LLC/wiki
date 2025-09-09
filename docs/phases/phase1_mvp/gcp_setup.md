@@ -1,4 +1,4 @@
-## Overview of Vocasync UI
+# Overview of Vocasync UI
 
 To implement an AI-powered video dubbing and voice cloning system, built using Gradio for the user interface. The pipeline takes an input video, extracts its audio, segments it into smaller chunks based on transcription timestamps, translates each segment into the target language, and then generates dubbed speech for each segment using advanced text-to-speech (TTS) models. It supports two modes of synthesis: original speaker cloning to preserve the speaker’s identity, and emotion cloning where a separate reference audio is used to transfer a specific emotional tone.The final result is a properly clubbed cloned audio tracks of both original audio clone and emotion reference audio clone.
 
@@ -37,6 +37,8 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 - For Indian languages, it is recommended to use Whisper Medium or above, as these can effectively detect the spoken language, generate accurate transcriptions, and produce timestamps for each spoken segment.
 - Since not all modules efficiently handle long audios or lengthy text sequences, the extracted text is further segmented based on Whisper’s timestamps.
 - This timestamp-based segmentation ensures that each portion of audio is transcribed, translated, and processed in manageable units.
+
+---
   
 #### 4. Text Translation
 
@@ -45,7 +47,9 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 - Translates each transcribed segment into the target language.
 - Works segment-wise to preserve timing and flow.
 - Prevents errors and context loss in long passages.
-  
+
+---
+
 #### 5. Voice Cloning
 
 **Model:** Coqui TTS (XTTS v2 / YourTTS)
@@ -60,6 +64,8 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 - YourTTS can be used when explicit emotion transfer is required.
 - Since TTS models support only about 300 words per generation, the segment-based method is used to process large audios efficiently.
 - Each segment is cloned separately, ensuring both speaker identity and emotion consistency are maintained in the dubbed output.
+
+---
   
 #### 6.Segment Stitching
 
@@ -67,6 +73,8 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 
 - All cloned segments (original clone and emotion clone) are stitched back together.
 - Silence padding is added where needed so the audio aligns perfectly with the original timestamps (should optimize this).
+
+---
   
 #### 7. Audio Similarity Analysis
 
@@ -75,6 +83,8 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 - The speaker embeddings of original audio and cloned audio are compared.
 - A similarity score is calculated to measure how closely the cloned voice matches the original speaker.
 - Similarity score is calculated for both original audio and emotion reference audio.
+
+---
   
 #### 8. Final Output Generation
 
