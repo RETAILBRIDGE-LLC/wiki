@@ -16,6 +16,7 @@ nav:
           - Manual Pipeline Integration: phases/phase1_mvp/manual_pipeline.md
           - Test: phases/phase1_mvp/test.md
           - GCP setup: phases/phase1_mvp/gcp_setup.md 
+          - AWS Set Up: phases/phase1_mvp/AWS_setup.md
       - Alpha Phase (Phase 2): phases/phase2_alpha/index.md
   - Glossary: glossary.md
 theme:
