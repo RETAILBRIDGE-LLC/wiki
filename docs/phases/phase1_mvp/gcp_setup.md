@@ -38,7 +38,9 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 - Since not all modules efficiently handle long audios or lengthy text sequences, the extracted text is further segmented based on Whisper’s timestamps.
 - This timestamp-based segmentation ensures that each portion of audio is transcribed, translated, and processed in manageable units.
 
+
 ---
+
   
 #### 4. Text Translation
 
