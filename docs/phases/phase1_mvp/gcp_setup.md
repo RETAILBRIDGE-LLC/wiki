@@ -96,3 +96,15 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 - Original Speaker Clone Audio (translated speech in the speaker’s voice).
 - Emotion-reference clone Audio (translated speech with emotion reference).
 - Results (audio files, transcription (both original and translated text) , similarity scores) are displayed in the Gradio interface.
+# AWS Setup
+#### 1. Launch EC2 Instance
+#### 🚀 1.1 Choose Instance
+
+Before deploying **VocaSync** on AWS, choose an EC2 instance that meets the following requirements:
+
+| **Requirement** | **Recommended** |
+|------------------|----------------|
+| **Instance Type** | `g4dn.xlarge` (GPU-enabled for faster Whisper + XTTS) <br> or `t3.xlarge` (CPU-only, slower) |
+| **Operating System** | **Ubuntu 22.04 LTS** |
+| **vCPUs / RAM** | 4 vCPUs / 16GB RAM minimum |
+| **Storage** | 30 GB EBS (gp3 recommended) |
