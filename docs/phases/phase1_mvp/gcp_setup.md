@@ -104,7 +104,7 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 #### Step 1: Upload the Notebook
 
 - Go to Colab → File → Upload notebook.
-- Upload the large_audios_cloning.ipynb notebook
+- Upload the UI/GCP_UI/UI.ipynb notebook
 
 ---
 
