@@ -111,3 +111,15 @@ Before deploying **VocaSync** on AWS, choose an EC2 instance that meets the foll
 | **Operating System** | **Ubuntu 22.04 LTS** |
 | **vCPUs / RAM** | 4 vCPUs / 16GB RAM minimum |
 | **Storage** | 30 GB EBS (gp3 recommended) |
+
+#### 🔐 1.2 Security Group
+
+Configure the **Security Group** for your EC2 instance to allow the following inbound rules:
+
+| **Port** | **Protocol** | **Purpose** |
+|---------|-------------|-------------|
+| **22** | TCP | SSH access to the instance |
+| **7860** | TCP | Access to the Gradio Web UI |
+| **80** | TCP | *(Optional)* Allow HTTP traffic (for Nginx or a reverse proxy) |
+| **443** | TCP | *(Optional)* Allow HTTPS traffic (for secure Nginx reverse proxy) |
+
