@@ -111,8 +111,10 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 #### Step 2: Check Python Version
 
 - Run a cell at the top of the notebook:
-    ```import sys
-    print("Current Python version:", sys.version)```
+    ```
+    import sys
+    print("Current Python version:", sys.version)
+    ```
 
 ---
 
