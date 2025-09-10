@@ -139,8 +139,8 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 
 - After running all cells, the Gradio interface will launch.
 - Colab will display two links:
-  - Public Gradio link (https)
-  - Localhost link (http)
+    - Public Gradio link (https)
+    - Localhost link (http)
 - Open either link in your browser.
 
 ---
