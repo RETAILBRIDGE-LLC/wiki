@@ -157,12 +157,11 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 #### Step 7: View Outputs
 
 - Gradio will show:
-  
-  - Transcribed text
-  - Translated text
-  - Cloned audio (original speaker)
-  - Emotion/reference speaker audio (if reference audio was provided)
-  - Similarity scores
+    - Transcribed text
+    - Translated text
+    - Cloned audio (original speaker)
+    - Emotion/reference speaker audio (if reference audio was provided)
+    - Similarity scores
 
 ---
 
