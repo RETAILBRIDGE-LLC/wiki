@@ -96,3 +96,62 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 - Original Speaker Clone Audio (translated speech in the speaker’s voice).
 - Emotion-reference clone Audio (translated speech with emotion reference).
 - Results (audio files, transcription (both original and translated text) , similarity scores) are displayed in the Gradio interface.
+
+---
+
+# Setup
+
+#### Step 1: Upload the Notebook
+
+- Go to Colab → File → Upload notebook.
+- Upload the large_audios_cloning.ipynb notebook
+
+---
+
+#### Step 2: Check Python Version
+
+- Run a cell at the top of the notebook:
+    import sys
+    print("Current Python version:", sys.version)
+
+---
+
+#### Step3: Run the code
+
+- If Python ≤ 3.11: ✅ You can continue running the notebook normally.
+- If Python > 3.11 (e.g., 3.12): ⚠️ TTS will fail, so you need to downgrade to Python 3.10/3.11.
+  Code for both cases is written in the file so just run those cells according to the instructions mentioned.
+  When prompted with: Do you want to install TTS? [y/n] → type y.
+
+---
+
+#### Step 4: Launch Gradio
+
+- After running all cells, the Gradio interface will launch.
+- Colab will display two links:
+  - Public Gradio link (https)
+  - Localhost link (http)
+- Open either link in your browser.
+
+---
+
+#### Step 5: Use the Interface
+
+- Upload an MP4 video.
+- Optional: upload reference emotion audio (if you have one).
+- Select source language, target language, Whisper model, and TTS model.
+- Click “Generate Dub”.
+
+---
+
+#### Step 6: View Outputs
+
+- Gradio will show:
+  - Transcribed text
+  - Translated text
+  - Cloned audio (original speaker)
+  - Emotion/reference speaker audio (if reference audio was provided)
+  - Similarity scores
+
+---
+
