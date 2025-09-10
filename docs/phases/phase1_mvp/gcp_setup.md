@@ -1,4 +1,3 @@
-# GCP Setup
 
 # Overview of Vocasync UI
 
