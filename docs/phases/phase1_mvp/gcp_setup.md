@@ -122,8 +122,8 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 
 - If Python ≤ 3.11: ✅ You can continue running the notebook normally.
 - If Python > 3.11 (e.g., 3.12): ⚠️ TTS will fail, so you need to downgrade to Python 3.10/3.11.
-  Code for both cases is written in the file so just run those cells according to the instructions mentioned.
-  When prompted with: Do you want to install TTS? [y/n] → type y.
+- Code for both cases is written in the file so just run those cells according to the instructions mentioned.
+- When prompted with: Do you want to install TTS? [y/n] → type y.
 
 ---
 
