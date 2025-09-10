@@ -14,7 +14,7 @@ nav:
           - Voice Synthesis: phases/phase1_mvp/voice_synthesis.md
           - Lip Sync: phases/phase1_mvp/lip_sync.md
           - Manual Pipeline Integration: phases/phase1_mvp/manual_pipeline.md
-          - Test: phases/phase1_mvp/test.md
+          - Kimai: phases/phase1_mvp/kimai.md
           - GCP setup: phases/phase1_mvp/gcp_setup.md 
           - AWS Set Up: phases/phase1_mvp/AWS_setup.md
       - Alpha Phase (Phase 2): phases/phase2_alpha/index.md
