@@ -110,8 +110,10 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 
 #### Step 2: Change runtime type
 - Make sure to use a GPU runtime as whisper medium/large and TTS works better with GPU:
-    -Runtime → Change runtime type
+    - Runtime → Change runtime type
     - You can select a T4 GPU or any available GPU.
+
+---
 
 #### Step 3: Check Python Version
 
