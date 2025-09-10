@@ -108,7 +108,12 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 
 ---
 
-#### Step 2: Check Python Version
+#### Step 2: Change runtime type
+- Make sure to use a GPU runtime as whisper medium/large and TTS works better with GPU:
+    -Runtime → Change runtime type
+    - You can select a T4 GPU or any available GPU.
+
+#### Step 3: Check Python Version
 
 - Run this cell at the top of the notebook:
     ```
@@ -118,7 +123,7 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 
 ---
 
-#### Step3: Run the code
+#### Step 4: Run the code
 
 - If Python ≤ 3.11: ✅ You can continue running the notebook normally.
 - If Python > 3.11 (e.g., 3.12): ⚠️ TTS will fail, so you need to downgrade to Python 3.10/3.11.
@@ -127,7 +132,7 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 
 ---
 
-#### Step 4: Launch Gradio
+#### Step 5: Launch Gradio
 
 - After running all cells, the Gradio interface will launch.
 - Colab will display two links:
@@ -137,7 +142,7 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 
 ---
 
-#### Step 5: Use the Interface
+#### Step 6: Use the Interface
 
 - Upload an MP4 video.
 - Optional: upload reference emotion audio (if you have one).
@@ -146,7 +151,7 @@ To implement an AI-powered video dubbing and voice cloning system, built using G
 
 ---
 
-#### Step 6: View Outputs
+#### Step 7: View Outputs
 
 - Gradio will show:
   - Transcribed text
