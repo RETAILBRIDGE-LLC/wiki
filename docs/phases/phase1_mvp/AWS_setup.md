@@ -153,7 +153,7 @@ Create a file called `start_gradio.sh` in `/home/ec2-user/`:
 nano /home/ec2-user/start_gradio.sh
 ---
 
-```#!/bin/bash
+```
 cd /home/ec2-user/
 source /home/ec2-user/gradio_env/bin/activate
 python3 app.py
