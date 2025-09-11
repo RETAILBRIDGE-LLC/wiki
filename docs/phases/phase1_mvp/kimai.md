@@ -33,7 +33,7 @@ tar -xzf kimai_files_backup.tar.gz -C /var/www/
 
 ---
 
-## Sending User report to Admin
+### Sending User report to Admin
 
 - Connected to Kimai Database – Used mysql.connector to connect directly to the kimai2 database and fetch weekly and total worked hours of users.
 - Processed Timesheet Data – Wrote SQL queries to calculate each user’s weekly work duration and overall total work duration.
@@ -49,7 +49,7 @@ tar -xzf kimai_files_backup.tar.gz -C /var/www/
 
 ---
 
-## Changes need to be done in kimai_db_report.py:
+### Changes need to be done in kimai_db_report.py:
 
 ```
 gmail_user = "yelagandulasupraja@gmail.com"    # replace it with sender mail
