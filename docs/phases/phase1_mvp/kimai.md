@@ -20,13 +20,13 @@
 ---
 
 ### To Restore kimai db use following command:
-        ```
-        mysql -u kimaiuser -p kimai2 < kimai_db_backup.sql
-        ```
+```
+mysql -u kimaiuser -p kimai2 < kimai_db_backup.sql
+```
  ### To restore files use following command: 
-       ```
-        tar -xzf kimai_files_backup.tar.gz -C /var/www/ 
-        ```
+```
+tar -xzf kimai_files_backup.tar.gz -C /var/www/ 
+```
 
 ---
 
