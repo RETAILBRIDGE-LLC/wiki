@@ -123,3 +123,65 @@ Configure the **Security Group** for your EC2 instance to allow the following in
 | **80** | TCP | *(Optional)* Allow HTTP traffic (for Nginx or a reverse proxy) |
 | **443** | TCP | *(Optional)* Allow HTTPS traffic (for secure Nginx reverse proxy) |
 
+---
+
+#### ⚙️ 2. Instance Setup & Auto-Start
+
+This step covers setting up your EC2 instance so that your Gradio app (`app.py`) runs automatically on every boot.
+
+---
+
+#### 🖥️ 2.1 Prepare the Instance
+
+1. **SSH into your EC2 Instance:**
+   ```bash
+   ssh -i your-key.pem ec2-user@<your-ec2-public-ip>
+#### 🖥️ 2.1 Ensure Your Environment is Ready
+
+Before proceeding, make sure the following are already set up on your EC2 instance:
+
+- ✅ `app.py` and all required dependencies are installed in `/home/ec2-user/`
+- ✅ A Python virtual environment exists at `/home/ec2-user/gradio_env/`
+
+---
+
+#### 🏃 2.2 Create Start Script
+
+Create a file called `start_gradio.sh` in `/home/ec2-user/`:
+
+```bash
+nano /home/ec2-user/start_gradio.sh
+---
+#!/bin/bash
+cd /home/ec2-user/
+source /home/ec2-user/gradio_env/bin/activate
+python3 app.py
+
+---
+
+#### 🔧 2.3 Create and Enable Systemd Service
+
+To ensure that your Gradio app automatically starts when the instance boots, create a **systemd service**.
+
+---
+
+Create the Service File
+
+Run the following command to create a new service file:
+
+```bash
+sudo nano /etc/systemd/system/gradio.service
+
+[Unit]
+Description=Gradio App
+After=network.target
+
+[Service]
+User=ec2-user
+WorkingDirectory=/home/ec2-user
+ExecStart=/home/ec2-user/start_gradio.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
