@@ -159,7 +159,7 @@ python3 app.py
 
 ---
 
-#### 🔧 2.4 Create and Enable Systemd Service**
+**Create and Enable Systemd Service**
 
 To ensure that your Gradio app automatically starts when the instance boots, create a **systemd service**.
 
