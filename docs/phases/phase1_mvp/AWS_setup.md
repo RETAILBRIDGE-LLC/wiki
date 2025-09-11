@@ -152,14 +152,15 @@ Create a file called `start_gradio.sh` in `/home/ec2-user/`:
 ```bash
 nano /home/ec2-user/start_gradio.sh
 ---
-#!/bin/bash
+
+```#!/bin/bash
 cd /home/ec2-user/
 source /home/ec2-user/gradio_env/bin/activate
 python3 app.py
 
 ---
 
-**Create and Enable Systemd Service**
+Create and Enable Systemd Service
 
 To ensure that your Gradio app automatically starts when the instance boots, create a **systemd service**.
 
