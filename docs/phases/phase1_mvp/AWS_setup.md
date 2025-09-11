@@ -211,15 +211,13 @@ if __name__ == "__main__":
 
 ---
 
----
-
-### 🌐 4. Optional – Domain + HTTPS (Production)
+#### 🌐 4. Optional – Domain + HTTPS (Production)
 
 For production deployments, you can expose your Gradio app securely via **Nginx** and **Let's Encrypt (Certbot)**.
 
 ---
 
-#### 📦 4.1 Install Nginx + Certbot  
+** 📦 4.1 Install Nginx + Certbot  **
 
 Run the following commands:  
 
@@ -227,7 +225,7 @@ Run the following commands:
 sudo apt-get install -y nginx certbot python3-certbot-nginx
 ---
 
-### ⚙️ 4.2 Configure Reverse Proxy  
+** ⚙️ 4.2 Configure Reverse Proxy  **
 
 Create a new Nginx configuration file:  
 
@@ -252,7 +250,7 @@ server {
 
 ---
 
-### 🔗 4.3 Enable Site and Restart Nginx  
+** 🔗 4.3 Enable Site and Restart Nginx **  
 
 Run the following commands:  
 
@@ -260,8 +258,6 @@ Run the following commands:
 sudo ln -s /etc/nginx/sites-available/vocasync /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
-
----
 
 ---
 
