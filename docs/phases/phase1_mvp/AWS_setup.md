@@ -209,4 +209,84 @@ if __name__ == "__main__":
         debug=True
     )
 
+---
+
+---
+
+### 🌐 4. Optional – Domain + HTTPS (Production)
+
+For production deployments, you can expose your Gradio app securely via **Nginx** and **Let's Encrypt (Certbot)**.
+
+---
+
+#### 📦 4.1 Install Nginx + Certbot  
+
+Run the following commands:  
+
+```bash
+sudo apt-get install -y nginx certbot python3-certbot-nginx
+---
+
+### ⚙️ 4.2 Configure Reverse Proxy  
+
+Create a new Nginx configuration file:  
+
+```bash
+sudo nano /etc/nginx/sites-available/vocasync
+
+---
+
+server {
+    listen 80;
+    server_name yourdomain.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:7860;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+---
+
+---
+
+### 🔗 4.3 Enable Site and Restart Nginx  
+
+Run the following commands:  
+
+```bash
+sudo ln -s /etc/nginx/sites-available/vocasync /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+
+---
+
+---
+
+### ▶️ 5. Running the Application  
+
+Run your application manually with:  
+
+```bash
+python vocasync.py
+
+Running on public URL: https://1234abcd.gradio.live
+
+---
+You can access the VocaSync UI in two ways:
+
+- Via the Gradio link shown in the terminal
+
+- Directly from your EC2 Public IPv4
+
+```ui.launch(server_name="0.0.0.0", server_port=7860)
+
+
+then simply open:
+
+```http://<your-ec2-public-ip>:7860
+
+Or click on the Public IPv4 address shown in your AWS EC2 console, append :7860 at the end, and the VocaSync UI will open in your browser
 
