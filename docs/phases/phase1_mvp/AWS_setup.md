@@ -133,10 +133,13 @@ This step covers setting up your EC2 instance so that your Gradio app (`app.py`)
 
 #### 🖥️ 2.1 Prepare the Instance
 
-1. **SSH into your EC2 Instance:**
+ **SSH into your EC2 Instance:**
    ```bash
    ssh -i your-key.pem ec2-user@<your-ec2-public-ip>
-#### 🖥️ 2.2 Ensure Your Environment is Ready
+
+---
+
+ #### 🖥️ 2.2 Ensure Your Environment is Ready
 
 Before proceeding, make sure the following are already set up on your EC2 instance:
 
@@ -185,4 +188,25 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
+
+---
+
+#### 🖥 3. Modify for Public Access
+
+To make the Gradio UI accessible from your EC2 instance’s public IP, edit `vocasync.py` and modify the `ui.launch()` section as follows:
+
+```python
+if __name__ == "__main__":
+    if os.path.exists(TEMP_DIR):
+        shutil.rmtree(TEMP_DIR)
+    os.makedirs(TEMP_DIR, exist_ok=True)
+    
+    # Launch Gradio publicly
+    ui.launch(
+        server_name="0.0.0.0",  # Listen on all network interfaces
+        server_port=7860,       # Port exposed in Security Group
+        share=False,            # Disable Gradio's share link (optional)
+        debug=True
+    )
+
 
