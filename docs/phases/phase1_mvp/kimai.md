@@ -41,10 +41,12 @@ tar -xzf kimai_files_backup.tar.gz -C /var/www/
 - Saved the Report – Exported the generated report as a PDF file (kimai_db_weekly_report.pdf).
 - Configured Email Setup – Used Python’s smtplib with Gmail SMTP server (smtp.gmail.com) and app password authentication.
 - Sent Report to Admin – Attached the PDF report to an email and automatically sent it to the admin (sanjanaproject36@gmail.com).
-- Configured a cron job to automatically execute the report generation and email script every Friday at 9:00 PM, with output logged for monitoring.
+- Configured a cron job to automatically execute the report generation and email script every time we run below code, with output logged for monitoring.
+  
   ```
-  0 21 * * 5 /usr/bin/python3 /home/ec2-user/kimai_db_report.py >> /home/ec2-user/kimai_cron.log 2>&1 (this is the cron job)
+  * ** * * * /usr/bin/python3 /home/ec2-user/kimai_db_report.py >> /home/ec2-user/kimai_cron.log 2>&1 
   ```
+  
 - Manual Execution Option – Provided the flexibility to run the script manually whenever required (e.g., by executing python3 kimai_db_report.py).
 
 ---
