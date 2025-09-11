@@ -136,7 +136,7 @@ This step covers setting up your EC2 instance so that your Gradio app (`app.py`)
 1. **SSH into your EC2 Instance:**
    ```bash
    ssh -i your-key.pem ec2-user@<your-ec2-public-ip>
-#### 🖥️ 2.1 Ensure Your Environment is Ready
+#### 🖥️ 2.2 Ensure Your Environment is Ready
 
 Before proceeding, make sure the following are already set up on your EC2 instance:
 
@@ -145,7 +145,7 @@ Before proceeding, make sure the following are already set up on your EC2 instan
 
 ---
 
-#### 🏃 2.2 Create Start Script
+#### 🏃 2.3 Create Start Script
 
 Create a file called `start_gradio.sh` in `/home/ec2-user/`:
 
@@ -159,7 +159,7 @@ python3 app.py
 
 ---
 
-#### 🔧 2.3 Create and Enable Systemd Service
+#### 🔧 2.4 Create and Enable Systemd Service**
 
 To ensure that your Gradio app automatically starts when the instance boots, create a **systemd service**.
 
