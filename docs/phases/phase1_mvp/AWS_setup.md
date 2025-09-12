@@ -136,7 +136,7 @@ This step covers setting up your EC2 instance so that your Gradio app (`app.py`)
  **SSH into your EC2 Instance:**
    ```bash
    ssh -i your-key.pem ec2-user@<your-ec2-public-ip>
-  ```
+   ```
 
 ---
 
@@ -155,6 +155,8 @@ Create a file called `start_gradio.sh` in `/home/ec2-user/`:
 
 ```bash
 nano /home/ec2-user/start_gradio.sh
+```
+
 ---
 
 ```
