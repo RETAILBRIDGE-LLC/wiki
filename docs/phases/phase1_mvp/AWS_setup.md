@@ -141,7 +141,7 @@ This step covers setting up your EC2 instance so that your Gradio app (`app.py`)
 
 ---
 
- ####  🖥️ 2.2 Ensure Your Environment is Ready
+ #### 🖥️ 2.2 Ensure Your Environment is Ready
 
 Before proceeding, make sure the following are already set up on your EC2 instance:
 
@@ -169,13 +169,13 @@ python3 app.py
 
 ---
 
-Create and Enable Systemd Service
+*Create and Enable Systemd Service*
 
 To ensure that your Gradio app automatically starts when the instance boots, create a **systemd service**.
 
 ---
 
-Create the Service File
+*Create the Service File*
 
 Run the following command to create a new service file:
 
@@ -231,7 +231,7 @@ For production deployments, you can expose your Gradio app securely via **Nginx*
 
 ---
 
- #### 📦 4.1 Install Nginx + Certbot
+#### 📦 4.1 Install Nginx + Certbot
 
 Run the following commands:  
 
@@ -269,7 +269,7 @@ server {
 
 ---
 
- #### 🔗 4.3 Enable Site and Restart Nginx **  
+#### 🔗 4.3 Enable Site and Restart Nginx **  
 
 Run the following commands:  
 
