@@ -9,6 +9,8 @@
 
 ---
 
+### Instance Name: test2
+
 ### Admin Credentials:
 - *Username:* admin
 - *Password:* kimaiadmin
