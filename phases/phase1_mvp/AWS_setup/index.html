@@ -1,0 +1,1357 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://wiki.retailbridge/vocasync/phases/phase1_mvp/AWS_setup/">
+      
+      
+        <link rel="prev" href="../gcp_setup/">
+      
+      
+        <link rel="next" href="../../../glossary/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>AWS Set Up - Vocasync Studios</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview-of-vocasync-ui" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Vocasync Studios" class="md-header__button md-logo" aria-label="Vocasync Studios" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M20.8 34c16.5-6.2 35 2.2 41.2 18.7l110.2 294L257.3 55c4-13.7 16.5-23 30.7-23s26.7 9.4 30.7 23l85.1 291.7L514 52.8c6.2-16.5 24.6-24.9 41.2-18.7s25 24.6 18.8 41.1l-144 384c-4.8 12.9-17.4 21.3-31.2 20.7s-25.7-9.8-29.5-23L288 178.3 206.7 457c-3.9 13.2-15.8 22.5-29.5 23s-26.3-7.8-31.2-20.7L2 75.2c-6.2-16.5 2.2-35 18.8-41.2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Vocasync Studios
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AWS Set Up
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Vocasync Studios" class="md-nav__button md-logo" aria-label="Vocasync Studios" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M20.8 34c16.5-6.2 35 2.2 41.2 18.7l110.2 294L257.3 55c4-13.7 16.5-23 30.7-23s26.7 9.4 30.7 23l85.1 291.7L514 52.8c6.2-16.5 24.6-24.9 41.2-18.7s25 24.6 18.8 41.1l-144 384c-4.8 12.9-17.4 21.3-31.2 20.7s-25.7-9.8-29.5-23L288 178.3 206.7 457c-3.9 13.2-15.8 22.5-29.5 23s-26.3-7.8-31.2-20.7L2 75.2c-6.2-16.5 2.2-35 18.8-41.2"/></svg>
+
+    </a>
+    Vocasync Studios
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    VocaSync
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            VocaSync
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vocasync/project_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vocasync/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Phases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Phases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MVP Phase (Phase 1)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            MVP Phase (Phase 1)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech_to_text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Speech to Text
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Translation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emotion_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emotion Detection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../voice_synthesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Voice Synthesis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lip_sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lip Sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manual_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Manual Pipeline Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kimai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kimai
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcp_setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GCP setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    AWS Set Up
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    AWS Set Up
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vocasync-emotion-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      VocaSync Emotion Pipeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VocaSync Emotion Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-video-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Video Input
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-audio-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Audio Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-audio-transcription-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Audio Transcription &amp; Segmentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-text-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Text Translation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-voice-cloning" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Voice Cloning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6segment-stitching" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.Segment Stitching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-audio-similarity-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Audio Similarity Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-final-output-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Final Output Generation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phase2_alpha/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpha Phase (Phase 2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vocasync-emotion-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      VocaSync Emotion Pipeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VocaSync Emotion Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-video-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Video Input
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-audio-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Audio Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-audio-transcription-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Audio Transcription &amp; Segmentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-text-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Text Translation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-voice-cloning" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Voice Cloning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6segment-stitching" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.Segment Stitching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-audio-similarity-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Audio Similarity Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-final-output-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Final Output Generation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="overview-of-vocasync-ui">Overview of Vocasync UI<a class="headerlink" href="#overview-of-vocasync-ui" title="Permanent link">&para;</a></h1>
+<p>To implement an AI-powered video dubbing and voice cloning system, built using Gradio for the user interface. The pipeline takes an input video, extracts its audio, segments it into smaller chunks based on transcription timestamps, translates each segment into the target language, and then generates dubbed speech for each segment using advanced text-to-speech (TTS) models. It supports two modes of synthesis: original speaker cloning to preserve the speaker’s identity, and emotion cloning where a separate reference audio is used to transfer a specific emotional tone.The final result is a properly clubbed cloned audio tracks of both original audio clone and emotion reference audio clone.</p>
+<hr />
+<h3 id="vocasync-emotion-pipeline">VocaSync Emotion Pipeline<a class="headerlink" href="#vocasync-emotion-pipeline" title="Permanent link">&para;</a></h3>
+<h4 id="1-video-input">1. Video Input<a class="headerlink" href="#1-video-input" title="Permanent link">&para;</a></h4>
+<p><strong>Inputs (Gradio UI)</strong></p>
+<ul>
+<li><strong>Video Input (MP4 file)</strong> → Source video from which audio is extracted.</li>
+<li><strong>Reference Emotion Audio</strong> → Used if specific emotional style is needed in dubbing.</li>
+<li><strong>Source Language</strong> → Language of the original audio (e.g., hi, en, te, ta, ur).</li>
+<li><strong>Target Language</strong> → Language into which speech will be translated and dubbed (e.g., en).</li>
+<li><strong>Whisper Model Size</strong> → Choice of transcription model (tiny, base, small, medium) depending on accuracy vs. speed.</li>
+<li><strong>TTS Model Type</strong> → Choice of cloning model (YourTTS, XTTS) for generating cloned voice output.</li>
+</ul>
+<hr />
+<h4 id="2-audio-extraction">2. Audio Extraction<a class="headerlink" href="#2-audio-extraction" title="Permanent link">&para;</a></h4>
+<p><strong>Library:</strong> MoviePy</p>
+<ul>
+<li>Extracts audio from the uploaded MP4 video using MoviePy library and saves it as .wav for further processing.</li>
+</ul>
+<hr />
+<h4 id="3-audio-transcription-segmentation">3. Audio Transcription &amp; Segmentation<a class="headerlink" href="#3-audio-transcription-segmentation" title="Permanent link">&para;</a></h4>
+<p><strong>Model:</strong> Whisper</p>
+<ul>
+<li>The extracted audio is transcribed into text using Whisper.</li>
+<li>Whisper is a transcription model developed by OpenAI, designed to transcribe audio in multiple languages, including Indian regional languages.</li>
+<li>It supports various model sizes such as tiny, small, medium, and large, where larger models provide higher accuracy and better multilingual support.</li>
+<li>For Indian languages, it is recommended to use Whisper Medium or above, as these can effectively detect the spoken language, generate accurate transcriptions, and produce timestamps for each spoken segment.</li>
+<li>Since not all modules efficiently handle long audios or lengthy text sequences, the extracted text is further segmented based on Whisper’s timestamps.</li>
+<li>This timestamp-based segmentation ensures that each portion of audio is transcribed, translated, and processed in manageable units.</li>
+</ul>
+<hr />
+<h4 id="4-text-translation">4. Text Translation<a class="headerlink" href="#4-text-translation" title="Permanent link">&para;</a></h4>
+<p><strong>Model:</strong> GoogleTranslator (deep-translator)</p>
+<ul>
+<li>Translates each transcribed segment into the target language.</li>
+<li>Works segment-wise to preserve timing and flow.</li>
+<li>Prevents errors and context loss in long passages.</li>
+</ul>
+<hr />
+<h4 id="5-voice-cloning">5. Voice Cloning<a class="headerlink" href="#5-voice-cloning" title="Permanent link">&para;</a></h4>
+<p><strong>Model:</strong> Coqui TTS (XTTS v2 / YourTTS)</p>
+<ul>
+<li>The translated text is cloned using audio references.</li>
+<li>
+<p>Two audio inputs can be used:</p>
+<ul>
+<li>Original video audio → to preserve the speaker’s identity.</li>
+<li>Emotion reference audio → to add a specific emotion.</li>
+</ul>
+</li>
+<li>
+<p>XTTS v2 provides better performance than YourTTS, producing highly similar cloned audio while retaining emotional tone from the original.</p>
+</li>
+<li>YourTTS can be used when explicit emotion transfer is required.</li>
+<li>Since TTS models support only about 300 words per generation, the segment-based method is used to process large audios efficiently.</li>
+<li>Each segment is cloned separately, ensuring both speaker identity and emotion consistency are maintained in the dubbed output.</li>
+</ul>
+<hr />
+<h4 id="6segment-stitching">6.Segment Stitching<a class="headerlink" href="#6segment-stitching" title="Permanent link">&para;</a></h4>
+<p><strong>Library:</strong> MoviePy + NumPy</p>
+<ul>
+<li>All cloned segments (original clone and emotion clone) are stitched back together.</li>
+<li>Silence padding is added where needed so the audio aligns perfectly with the original timestamps (should optimize this).</li>
+</ul>
+<hr />
+<h4 id="7-audio-similarity-analysis">7. Audio Similarity Analysis<a class="headerlink" href="#7-audio-similarity-analysis" title="Permanent link">&para;</a></h4>
+<p><strong>Library:</strong> Resemblyzer</p>
+<ul>
+<li>The speaker embeddings of original audio and cloned audio are compared.</li>
+<li>A similarity score is calculated to measure how closely the cloned voice matches the original speaker.</li>
+<li>Similarity score is calculated for both original audio and emotion reference audio.</li>
+</ul>
+<hr />
+<h4 id="8-final-output-generation">8. Final Output Generation<a class="headerlink" href="#8-final-output-generation" title="Permanent link">&para;</a></h4>
+<p><strong>Library:</strong> Gradio</p>
+<ul>
+<li>The user receives two outputs:</li>
+<li>Original Speaker Clone Audio (translated speech in the speaker’s voice).</li>
+<li>Emotion-reference clone Audio (translated speech with emotion reference).</li>
+<li>Results (audio files, transcription (both original and translated text) , similarity scores) are displayed in the Gradio interface.</li>
+</ul>
+<hr />
+<h1 id="aws-setup">AWS Setup<a class="headerlink" href="#aws-setup" title="Permanent link">&para;</a></h1>
+<h4 id="1-launch-ec2-instance">1. Launch EC2 Instance<a class="headerlink" href="#1-launch-ec2-instance" title="Permanent link">&para;</a></h4>
+<h4 id="11-choose-instance">🚀 1.1 Choose Instance<a class="headerlink" href="#11-choose-instance" title="Permanent link">&para;</a></h4>
+<p>Before deploying <strong>VocaSync</strong> on AWS, choose an EC2 instance that meets the following requirements:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Requirement</strong></th>
+<th><strong>Recommended</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Instance Type</strong></td>
+<td><code>g4dn.xlarge</code> (GPU-enabled for faster Whisper + XTTS) <br> or <code>t3.xlarge</code> (CPU-only, slower)</td>
+</tr>
+<tr>
+<td><strong>Operating System</strong></td>
+<td><strong>Ubuntu 22.04 LTS</strong></td>
+</tr>
+<tr>
+<td><strong>vCPUs / RAM</strong></td>
+<td>4 vCPUs / 16GB RAM minimum</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>30 GB EBS (gp3 recommended)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="12-security-group">🔐 1.2 Security Group<a class="headerlink" href="#12-security-group" title="Permanent link">&para;</a></h4>
+<p>Configure the <strong>Security Group</strong> for your EC2 instance to allow the following inbound rules:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Port</strong></th>
+<th><strong>Protocol</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>22</strong></td>
+<td>TCP</td>
+<td>SSH access to the instance</td>
+</tr>
+<tr>
+<td><strong>7860</strong></td>
+<td>TCP</td>
+<td>Access to the Gradio Web UI</td>
+</tr>
+<tr>
+<td><strong>80</strong></td>
+<td>TCP</td>
+<td><em>(Optional)</em> Allow HTTP traffic (for Nginx or a reverse proxy)</td>
+</tr>
+<tr>
+<td><strong>443</strong></td>
+<td>TCP</td>
+<td><em>(Optional)</em> Allow HTTPS traffic (for secure Nginx reverse proxy)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="2-instance-setup-auto-start">⚙️ 2. Instance Setup &amp; Auto-Start<a class="headerlink" href="#2-instance-setup-auto-start" title="Permanent link">&para;</a></h4>
+<p>This step covers setting up your EC2 instance so that your Gradio app (<code>app.py</code>) runs automatically on every boot.</p>
+<hr />
+<h4 id="21-prepare-the-instance">🖥️ 2.1 Prepare the Instance<a class="headerlink" href="#21-prepare-the-instance" title="Permanent link">&para;</a></h4>
+<p><strong>SSH into your EC2 Instance:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ssh -i your-key.pem ec2-user@&lt;your-ec2-public-ip&gt;
+</span></code></pre></div>
+<hr />
+<h4 id="22-ensure-your-environment-is-ready">🖥️ 2.2 Ensure Your Environment is Ready<a class="headerlink" href="#22-ensure-your-environment-is-ready" title="Permanent link">&para;</a></h4>
+<p>Before proceeding, make sure the following are already set up on your EC2 instance:</p>
+<ul>
+<li>✅ <code>app.py</code> and all required dependencies are installed in <code>/home/ec2-user/</code></li>
+<li>✅ A Python virtual environment exists at <code>/home/ec2-user/gradio_env/</code></li>
+</ul>
+<hr />
+<h4 id="23-create-start-script">🏃 2.3 Create Start Script<a class="headerlink" href="#23-create-start-script" title="Permanent link">&para;</a></h4>
+<p>Create a file called <code>start_gradio.sh</code> in <code>/home/ec2-user/</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bash
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>nano /home/ec2-user/start_gradio.sh
+</span></code></pre></div>
+<hr />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cd /home/ec2-user/
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>source /home/ec2-user/gradio_env/bin/activate
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python3 app.py
+</span></code></pre></div>
+<hr />
+<h5 id="create-and-enable-systemd-service">Create and Enable Systemd Service<a class="headerlink" href="#create-and-enable-systemd-service" title="Permanent link">&para;</a></h5>
+<p>To ensure that your Gradio app automatically starts when the instance boots, create a <strong>systemd service</strong>.</p>
+<hr />
+<h5 id="create-the-service-file">Create the Service File<a class="headerlink" href="#create-the-service-file" title="Permanent link">&para;</a></h5>
+<p>Run the following command to create a new service file:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bash
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo nano /etc/systemd/system/gradio.service
+</span></code></pre></div>
+<hr />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[Unit]
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Description=Gradio App
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>After=network.target
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>[Service]
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>User=ec2-user
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>WorkingDirectory=/home/ec2-user
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>ExecStart=/home/ec2-user/start_gradio.sh
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Restart=always
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>[Install]
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>WantedBy=multi-user.target
+</span></code></pre></div>
+<hr />
+<h4 id="3-modify-for-public-access">🖥 3. Modify for Public Access<a class="headerlink" href="#3-modify-for-public-access" title="Permanent link">&para;</a></h4>
+<p>To make the Gradio UI accessible from your EC2 instance’s public IP, edit <code>vocasync.py</code> and modify the <code>ui.launch()</code> section as follows:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>if __name__ == &quot;__main__&quot;:
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    if os.path.exists(TEMP_DIR):
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        shutil.rmtree(TEMP_DIR)
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    os.makedirs(TEMP_DIR, exist_ok=True)
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    # Launch Gradio publicly
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    ui.launch(
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        server_name=&quot;0.0.0.0&quot;,  # Listen on all network interfaces
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        server_port=7860,       # Port exposed in Security Group
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        share=False,            # Disable Gradio&#39;s share link (optional)
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        debug=True
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    )
+</span></code></pre></div>
+<hr />
+<h4 id="4-optional-domain-https-production">🌐 4. Optional – Domain + HTTPS (Production)<a class="headerlink" href="#4-optional-domain-https-production" title="Permanent link">&para;</a></h4>
+<p>For production deployments, you can expose your Gradio app securely via <strong>Nginx</strong> and <strong>Let's Encrypt (Certbot)</strong>.</p>
+<hr />
+<h4 id="41-install-nginx-certbot">📦 4.1 Install Nginx + Certbot<a class="headerlink" href="#41-install-nginx-certbot" title="Permanent link">&para;</a></h4>
+<p>Run the following commands:  </p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bash
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo apt-get install -y nginx certbot python3-certbot-nginx
+</span></code></pre></div>
+<hr />
+<h4 id="42-configure-reverse-proxy">⚙️ 4.2 Configure Reverse Proxy<a class="headerlink" href="#42-configure-reverse-proxy" title="Permanent link">&para;</a></h4>
+<p>Create a new Nginx configuration file:  </p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bash
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo nano /etc/nginx/sites-available/vocasync
+</span></code></pre></div>
+<hr />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>server {
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    listen 80;
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    server_name yourdomain.com;
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    location / {
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        proxy_pass http://127.0.0.1:7860;
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>        proxy_set_header Host $host;
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>        proxy_set_header X-Real-IP $remote_addr;
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    }
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>}
+</span></code></pre></div>
+<hr />
+<h4 id="43-enable-site-and-restart-nginx">🔗 4.3 Enable Site and Restart Nginx **<a class="headerlink" href="#43-enable-site-and-restart-nginx" title="Permanent link">&para;</a></h4>
+<p>Run the following commands:  </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/vocasync<span class="w"> </span>/etc/nginx/sites-enabled/
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nginx
+</span></code></pre></div>
+<hr />
+<h3 id="5-running-the-application">▶️ 5. Running the Application<a class="headerlink" href="#5-running-the-application" title="Permanent link">&para;</a></h3>
+<p>Run your application manually with:  </p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>bash
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>python app.py
+</span></code></pre></div>
+<p>Running on public URL: https://1234abcd.gradio.live</p>
+<hr />
+<p>You can access the VocaSync UI in two ways:</p>
+<ul>
+<li>
+<p>Via the Gradio link shown in the terminal</p>
+</li>
+<li>
+<p>Directly from your EC2 Public IPv4</p>
+</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ui.launch(server_name=&quot;0.0.0.0&quot;, server_port=7860)
+</span></code></pre></div>
+<p>then simply open:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>http://&lt;your-ec2-public-ip&gt;:7860
+</span></code></pre></div>
+Or click on the Public IPv4 address shown in your AWS EC2 console, append :7860 at the end, and the VocaSync UI will open in your browser</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../gcp_setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GCP setup">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                GCP setup
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../glossary/" class="md-footer__link md-footer__link--next" aria-label="Next: Glossary">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Glossary
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 RetailBridge LLC
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://youtube.com" target="_blank" rel="noopener" title="youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
