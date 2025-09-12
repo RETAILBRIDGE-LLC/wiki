@@ -141,7 +141,7 @@ This step covers setting up your EC2 instance so that your Gradio app (`app.py`)
 
 ---
 
- #### 🖥️ 2.2 Ensure Your Environment is Ready
+ ####  🖥️ 2.2 Ensure Your Environment is Ready
 
 Before proceeding, make sure the following are already set up on your EC2 instance:
 
